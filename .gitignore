@@ -89,7 +89,4 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
-language-clock/package-lock.json
-/FB_Versa3_Sense/language-clock/package-lock.json
-FB_Versa4_Sense2/language-clock/package-lock.json
-FB_Versa_VersaLite_Versa2/language-clock/package-lock.json
+hex-clock/package-lock.json
