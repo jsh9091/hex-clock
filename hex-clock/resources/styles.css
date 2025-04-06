@@ -10,3 +10,13 @@
   height: 100%;
   fill: white;
 }
+
+#clockLabel {
+  font-size: 100;
+  font-family: System-Bold;
+  text-length: 80;
+  text-anchor: middle;
+  x: 50%-15;
+  y: 55%;
+  fill: black;
+}
