@@ -15,31 +15,34 @@ const clockLabel = document.getElementById("clockLabel");
  * @param {*} evt 
  */
 clock.ontick = (evt) => {
-  
+
     // get time information from API
     let todayDate = evt.date;
     let rawHours = todayDate.getHours();
-  
-    let hours;
-    if (preferences.clockDisplay === "12h") {
-      // 12 hour format
-      hours = rawHours % 12 || 12;
-    } else {
-      // 24 hour format
-      if (rawHours > 9) {
-        hours = zeroPad(rawHours);
-      } else {
-        hours = rawHours;
-      }
-    }
-  
-    let mins = todayDate.getMinutes();
-    let displayMins = zeroPad(mins);
-  
-    // display time on main clock
-    clockLabel.text = `${hours}:${displayMins}`;
 
-  };
+    // 12 hour format
+    let hours = rawHours % 12 || 12;
+
+    let mins = todayDate.getMinutes();
+
+    // convert to hex
+    let dhours = hours.toString(16);
+    let dmins = mins.toString(16);
+
+
+    // display time on main clock
+    clockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
+
+};
+
+/**
+ * Converts a decimal number to a hexadecimal number. 
+ * @param {*} number 
+ * @returns 
+ */
+function decimalToHexString(number) {
+  return number.toString(16).toUpperCase();
+}
 
   
 /**
