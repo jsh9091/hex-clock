@@ -8,6 +8,8 @@ clock.granularity = "minutes";
 
 // Get a handle on the <text> elements
 const clockLabel = document.getElementById("clockLabel");
+let hourHand = document.getElementById("hourHand");
+let minuteHand = document.getElementById("minuteHand");
 
 
 /**
@@ -33,6 +35,7 @@ clock.ontick = (evt) => {
     // display time on main clock
     clockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
 
+    updateClock();
 };
 
 /**
@@ -55,4 +58,40 @@ function zeroPad(i) {
       i = "0" + i;
     }
     return i;
+  }
+
+  /**
+ * Rotates the clock hands to show the curent time.
+ */
+function updateClock() {
+    let today = new Date();
+    let hours = today.getHours() % 12;
+    let mins = today.getMinutes();
+    let secs = today.getSeconds();
+  
+    hourHand.groupTransform.rotate.angle = hoursToAngle(hours, mins);
+    minuteHand.groupTransform.rotate.angle = minutesToAngle(mins);
+  }
+
+  
+/**
+ * Returns an angle (0-360) for the current hour in the day.
+ * Also adjust the hour hand for minutes past the hour.
+ * @param {*} hours
+ * @param {*} minutes
+ * @returns
+ */
+function hoursToAngle(hours, minutes) {
+    let hourAngle = (360 / 12) * hours;
+    let minAngle = (360 / 12 / 60) * minutes;
+    return hourAngle + minAngle;
+  }
+  
+  /**
+   * Returns an angle (0-360) for minutes
+   * @param {*} minutes
+   * @returns
+   */
+  function minutesToAngle(minutes) {
+    return (360 / 60) * minutes;
   }
