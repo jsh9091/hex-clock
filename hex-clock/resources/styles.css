@@ -95,3 +95,23 @@
   y: 55%;
   fill: black;
 }
+
+#weekdayLabel {
+  font-size: 28;
+  font-family: FBNucleon-Regular;
+  text-length: 80;
+  text-anchor: middle;
+  x: 67%;
+  y: 70%;
+  fill: black;
+}
+
+#dateLabel {
+  font-size: 28;
+  font-family: FBNucleon-Regular;
+  text-length: 80;
+  text-anchor: middle;
+  x: 67%;
+  y: 80%;
+  fill: black;
+}

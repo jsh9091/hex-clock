@@ -42,6 +42,8 @@ const pmLabel = document.getElementById("pmLabel");
 const digitalClockLabel = document.getElementById("digitalClockLabel");
 let hourHand = document.getElementById("hourHand");
 let minuteHand = document.getElementById("minuteHand");
+let weekdayLabel = document.getElementById("weekdayLabel");
+let dateLabel = document.getElementById("dateLabel");
 
 /**
  * Update the display of clock values.
@@ -59,14 +61,6 @@ clock.ontick = (evt) => {
     let todayDate = evt.date;
     let rawHours = todayDate.getHours();
 
-    if (rawHours < 12) {
-        amLabel.text = "AM";
-        pmLabel.text = "";
-      } else {
-        amLabel.text = "";
-        pmLabel.text = "PM";
-      }
-
     let hours;
     if (preferences.clockDisplay === "12h") {
       // 12 hour format
@@ -82,7 +76,9 @@ clock.ontick = (evt) => {
     digitalClockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
 
     updateAnalogClock();
-
+    amPmDisplay(evt);
+    updateDateField(evt);
+    updateDayField(evt);
     updateBattery();
 };
 
@@ -105,7 +101,7 @@ function updateAnalogClock() {
   
     hourHand.groupTransform.rotate.angle = hoursToAngle(hours, mins);
     minuteHand.groupTransform.rotate.angle = minutesToAngle(mins);
-  }
+}
 
 /**
  * Returns an angle (0-360) for the current hour in the day.
@@ -119,15 +115,15 @@ function hoursToAngle(hours, minutes) {
     let minAngle = (360 / 12 / 60) * minutes;
     return hourAngle + minAngle;
   }
-  
-  /**
-   * Returns an angle (0-360) for minutes
-   * @param {*} minutes
-   * @returns
-   */
-  function minutesToAngle(minutes) {
+
+/**
+ * Returns an angle (0-360) for minutes
+ * @param {*} minutes
+ * @returns
+ */
+function minutesToAngle(minutes) {
     return (360 / 60) * minutes;
-  }
+}
 
 /**
  * Gets and formats user step count for the day.
@@ -142,7 +138,7 @@ function getSteps() {
           ? `${Math.floor(val / 1000)},${("00" + (val % 1000)).slice(-3)}`
           : val,
     };
-  }
+}
 
 /**
  * Update the displayed battery level. 
@@ -151,39 +147,95 @@ function getSteps() {
  */
 battery.onchange = (charger, evt) => {
     updateBattery();
-  };
-  
-  /**
-   * Updates the battery battery icon and label.
-   */
-  function updateBattery() {
+};
+
+/**
+ * Updates the battery battery icon and label.
+ */
+function updateBattery() {
     updateBatteryLabel();
     updateBatteryIcon();
-  }
+}
   
-  /**
-   * Updates the battery lable GUI for battery percentage. 
-   */
-  function updateBatteryLabel() {
+/**
+ * Updates the battery lable GUI for battery percentage. 
+ */
+function updateBatteryLabel() {
     let percentSign = "&#x25";
     batteryLabel.text = battery.chargeLevel + percentSign;
-  }
-  
-  /**
-   * Updates what battery icon is displayed. 
-   */
-  function updateBatteryIcon() {
+}
+
+/**
+ * Updates what battery icon is displayed. 
+ */
+function updateBatteryIcon() {
     const minFull = 70;
     const minHalf = 30;
-    
+
     if (battery.charging) {
-      batteryIcon.image = "battery-charging.png"
+        batteryIcon.image = "battery-charging.png"
     } else if (battery.chargeLevel > minFull) {
-      batteryIcon.image = "battery-full.png"
+        batteryIcon.image = "battery-full.png"
     } else if (battery.chargeLevel < minFull && battery.chargeLevel > minHalf) {
-      batteryIcon.image = "battery-half.png"
+        batteryIcon.image = "battery-half.png"
     } else if (battery.chargeLevel < minHalf) {
-      batteryIcon.image = "battery-low.png"
+        batteryIcon.image = "battery-low.png"
     }
-  }
-  
+}
+
+/**
+ * Updates display of AM and PM indicators. 
+ * @param {*} evt 
+ */
+function amPmDisplay(evt) {
+    let rawHours = evt.date.getHours();
+
+    if (rawHours < 12) {
+        amLabel.text = "AM";
+        pmLabel.text = "";
+      } else {
+        amLabel.text = "";
+        pmLabel.text = "PM";
+      }
+}
+
+/**
+ * Sets current date in GUI. 
+ * @param {*} evt 
+ */
+function updateDateField(evt) {
+    const monthNames = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+
+    let month = monthNames[evt.date.getMonth()];
+    let dayOfMonth = evt.date.getDate();
+    let year = evt.date.getUTCFullYear();
+
+    dateLabel.text = `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;
+}
+
+/**
+ * Updates day of week displayed. 
+ * @param {*} evt 
+ */
+function updateDayField(evt) {
+
+    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    let index = evt.date.getDay();
+    let day = dayNames[index];
+
+    weekdayLabel.text = day;
+}
