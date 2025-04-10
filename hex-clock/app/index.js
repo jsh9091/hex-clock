@@ -57,8 +57,14 @@ clock.ontick = (evt) => {
     let todayDate = evt.date;
     let rawHours = todayDate.getHours();
 
-    // 12 hour format
-    let hours = rawHours % 12 || 12;
+    let hours;
+    if (preferences.clockDisplay === "12h") {
+      // 12 hour format
+      hours = rawHours % 12 || 12;
+    } else {
+      // 24 hour format
+      hours = rawHours;
+    }
 
     let mins = todayDate.getMinutes();
 
