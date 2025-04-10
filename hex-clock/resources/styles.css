@@ -22,16 +22,9 @@
  * SOFTWARE.
  */
 
-.defaultText {
-  font-size: 32;
-  font-family: System-Regular;
-  font-weight: regular;
-  text-length: 32;
-}
-
 #stepCountLabel {
   font-size: 30;
-  font-family: FBNucleon-Regular;
+  font-family: System-Regular;
   text-length: 80;
   text-anchor: start;
   x: 19%;
@@ -50,7 +43,7 @@
 
 #batteryLabel {
   font-size: 30;
-  font-family: FBNucleon-Regular;
+  font-family: System-Regular;
   text-length: 80;
   text-anchor: end;
   x: 81%;
@@ -68,22 +61,22 @@
 }
 
 #amLabel {
-  font-size: 20;
-  font-family: FBNucleon-Bold;
+  font-size: 23;
+  font-family: System-Bold;
   text-length: 80;
   text-anchor: start;
   x: 4%;
-  y: 36%;
+  y: 37%;
   fill: black
 }
 
 #pmLabel {
-  font-size: 20;
-  font-family: FBNucleon-Bold;
+  font-size: 23;
+  font-family: System-Bold;
   text-length: 80;
   text-anchor: end;
   x: 96%;
-  y: 36%;
+  y: 37%;
   fill: black
 }
 #digitalClockLabel {
@@ -98,7 +91,7 @@
 
 #weekdayLabel {
   font-size: 28;
-  font-family: FBNucleon-Regular;
+  font-family: System-Bold;
   text-length: 80;
   text-anchor: middle;
   x: 67%;
@@ -108,10 +101,10 @@
 
 #dateLabel {
   font-size: 28;
-  font-family: FBNucleon-Regular;
+  font-family: System-Bold;
   text-length: 80;
   text-anchor: middle;
   x: 67%;
-  y: 80%;
+  y: 81%;
   fill: black;
 }
