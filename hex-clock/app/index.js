@@ -37,6 +37,8 @@ const stepCountLabel = document.getElementById("stepCountLabel");
 const stepsIcon = document.getElementById("stepsIcon");
 const batteryLabel = document.getElementById("batteryLabel");
 const batteryIcon = document.getElementById("batteryIcon");
+const amLabel = document.getElementById("amLabel");
+const pmLabel = document.getElementById("pmLabel");
 const digitalClockLabel = document.getElementById("digitalClockLabel");
 let hourHand = document.getElementById("hourHand");
 let minuteHand = document.getElementById("minuteHand");
@@ -56,6 +58,14 @@ clock.ontick = (evt) => {
     // get time information from API
     let todayDate = evt.date;
     let rawHours = todayDate.getHours();
+
+    if (rawHours < 12) {
+        amLabel.text = "AM";
+        pmLabel.text = "";
+      } else {
+        amLabel.text = "";
+        pmLabel.text = "PM";
+      }
 
     let hours;
     if (preferences.clockDisplay === "12h") {

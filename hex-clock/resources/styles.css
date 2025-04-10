@@ -67,6 +67,25 @@
   opacity: 1; 
 }
 
+#amLabel {
+  font-size: 20;
+  font-family: FBNucleon-Bold;
+  text-length: 80;
+  text-anchor: start;
+  x: 4%;
+  y: 36%;
+  fill: black
+}
+
+#pmLabel {
+  font-size: 20;
+  font-family: FBNucleon-Bold;
+  text-length: 80;
+  text-anchor: end;
+  x: 96%;
+  y: 36%;
+  fill: black
+}
 #digitalClockLabel {
   font-size: 100;
   font-family: FBNucleon-Bold;

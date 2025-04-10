@@ -32,6 +32,9 @@
   <text id="batteryLabel" />
   <image id="batteryIcon" href="battery-full.png" />
 
+  <text id="amLabel" />
+  <text id="pmLabel" />
+
   <text id="digitalClockLabel" />
 
   <!-- analog clock -->
