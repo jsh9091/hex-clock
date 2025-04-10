@@ -35,6 +35,44 @@
   fill: green;
 }
 
+#stepCountLabel {
+  font-size: 30;
+  font-family: System-Regular;
+  text-length: 80;
+  text-anchor: start;
+  x: 18%;
+  y: 20%;
+  fill: aqua
+}
+
+#stepsIcon {
+  x: 5%;
+  y: 14%;
+  width: "35";
+  height: "25";
+  fill: aqua; 
+  opacity: 1;
+}
+
+#batteryLabel {
+  font-size: 30;
+  font-family: System-Regular;
+  text-length: 80;
+  text-anchor: end;
+  x: 82%;
+  y: 20%;
+  fill: aqua
+}
+
+#batteryIcon {
+  x: 84%;
+  y: 14%;
+  width: "35";
+  height: "20";
+  fill: aqua; 
+  opacity: 1; 
+}
+
 #digitalClockLabel {
   font-size: 100;
   font-family: System-Bold;

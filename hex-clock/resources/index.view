@@ -22,7 +22,16 @@
   SOFTWARE. -->
 
 <svg>
-  <rect id="background" />
+  <rect x="0" y="0" width="100%" height="30%" fill="black" />
+  <rect x="5" y="30%" width="97%" height="30%" fill="aqua" id="clockbox" />
+  <rect x="0" y="60%" width="100%" height="45%" fill="yellow" />
+
+  <text id="stepCountLabel" />
+  <image id="stepsIcon" href="steps.png" />
+
+  <text id="batteryLabel" />
+  <image id="batteryIcon" href="battery-full.png" />
+
   <text id="digitalClockLabel" />
 
   <!-- analog clock -->
