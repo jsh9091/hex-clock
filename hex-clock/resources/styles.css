@@ -37,16 +37,16 @@
 
 #stepCountLabel {
   font-size: 30;
-  font-family: System-Regular;
+  font-family: FBNucleon-Regular;
   text-length: 80;
   text-anchor: start;
-  x: 18%;
+  x: 19%;
   y: 20%;
   fill: aqua
 }
 
 #stepsIcon {
-  x: 5%;
+  x: 6%;
   y: 14%;
   width: "35";
   height: "25";
@@ -56,16 +56,16 @@
 
 #batteryLabel {
   font-size: 30;
-  font-family: System-Regular;
+  font-family: FBNucleon-Regular;
   text-length: 80;
   text-anchor: end;
-  x: 82%;
+  x: 81%;
   y: 20%;
   fill: aqua
 }
 
 #batteryIcon {
-  x: 84%;
+  x: 83%;
   y: 14%;
   width: "35";
   height: "20";
@@ -75,10 +75,10 @@
 
 #digitalClockLabel {
   font-size: 100;
-  font-family: System-Bold;
+  font-family: FBNucleon-Bold;
   text-length: 80;
   text-anchor: middle;
-  x: 50%-15;
+  x: 50%;
   y: 55%;
   fill: black;
 }
