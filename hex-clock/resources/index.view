@@ -26,13 +26,13 @@
   <text id="digitalClockLabel" />
 
   <!-- analog clock -->
-  <circle cx="50%" cy="50%" r="45" fill="black" />
-  <g id="hourHand" pointer-events="visible" transform="translate(50%,50%)">
+  <circle cx="23%" cy="77%" r="45" fill="black" />
+  <g id="hourHand" pointer-events="visible" transform="translate(23%,77%)">
     <rect x="$-3" y="-22" width="4" height="20" fill="#fcfcfc" />
   </g>
-  <g id="minuteHand" pointer-events="visible" transform="translate(50%,50%)">
+  <g id="minuteHand" pointer-events="visible" transform="translate(23%,77%)">
     <rect x="$-3" y="-35" width="3" height="39" fill="#fcfcfc" />
   </g>
-  <circle cx="50%" cy="50%" r="6" fill="white" />
+  <circle cx="23%" cy="77%" r="6" fill="white" />
 
 </svg>
