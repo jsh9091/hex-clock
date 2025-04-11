@@ -108,3 +108,21 @@
   y: 81%;
   fill: black;
 }
+
+#tempLabel {
+  font-size: 28;
+  font-family: System-Bold;
+  text-length: 128;
+  text-anchor: end;
+  x: 72%;
+  y: 92%;
+  fill: black;
+}
+
+#tempIcon {
+  x: 74%;
+  y: 85%;
+  width: "16";
+  height: "29";
+  fill: black;
+}
