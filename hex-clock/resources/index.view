@@ -40,7 +40,7 @@
   <text id="weekdayLabel" />
   <text id="dateLabel" />
 
-  <text id="tempLabel" >57°F</text> <!--TODO remove hardcoded value when JS completed-->
+  <text id="tempLabel" />
   <image id="tempIcon" href="thermometer.png" />
 
   <!-- analog clock -->

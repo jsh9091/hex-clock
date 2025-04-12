@@ -26,8 +26,9 @@ import clock from "clock";
 import * as document from "document";
 import { me as appbit } from "appbit";
 import { today as activity } from "user-activity";
-import { preferences } from "user-settings";
+import { preferences, units } from "user-settings";
 import { battery } from "power";
+import * as newfile from "./newfile";
 
 // Update the clock every second
 clock.granularity = "minutes";
@@ -44,6 +45,7 @@ let hourHand = document.getElementById("hourHand");
 let minuteHand = document.getElementById("minuteHand");
 let weekdayLabel = document.getElementById("weekdayLabel");
 let dateLabel = document.getElementById("dateLabel");
+const tempLabel = document.getElementById("tempLabel");
 
 /**
  * Update the display of clock values.
@@ -239,3 +241,33 @@ function updateDayField(evt) {
 
     weekdayLabel.text = day;
 }
+
+/**
+ * Receive and process new tempature data. 
+ */
+newfile.initialize(data => {
+    if (appbit.permissions.granted("access_location")) {
+      
+      data = units.temperature === "C" ? data : toFahrenheit(data);
+      let degreeSymbol = "\u00B0";
+      let lettertMarker = units.temperature === "C" ? `C` : `F`;
+      
+      // set values in GUI
+      tempLabel.text = `${data.temperature}` + degreeSymbol + lettertMarker;
+    } else {
+      tempLabel.text = "----";
+    }
+  });
+  
+  /**
+  * Convert temperature value to Fahrenheit
+  * @param {object} data WeatherData
+  */
+  function toFahrenheit(data) {
+    if (data.unit.toLowerCase() === "celsius") {
+       data.temperature =  Math.round((data.temperature * 1.8) + 32);
+       data.unit = "Fahrenheit";
+    }
+    return data
+  }
+  
