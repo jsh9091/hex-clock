@@ -208,7 +208,8 @@ function amPmDisplay(evt) {
  */
 function updateDateField(evt) {
     let day = getDayField(evt);
-    let dayOfMonth = getMonth(evt);
+    let dayOfMonth = evt.date.getDate();
+    let month = getMonth(evt);
     let year = evt.date.getUTCFullYear();
 
     dateLabel.text =  `${day}` + " " +  `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;

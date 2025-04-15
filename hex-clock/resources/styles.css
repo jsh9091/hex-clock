@@ -62,7 +62,7 @@
 }
 
 #stepsIcon {
-  x: 50%;
+  x: 48%;
   y: 65%;
   width: "35";
   height: "25";
@@ -75,14 +75,32 @@
   font-family: System-Bold;
   text-length: 80;
   text-anchor: start;
-  x: 64%;
+  x: 62%;
   y: 72%;
   fill: black
 }
 
+#tempIcon {
+  x: 51%;
+  y: 75%;
+  width: "16";
+  height: "29";
+  fill: black;
+}
+
+#tempLabel {
+  font-size: 28;
+  font-family: System-Bold;
+  text-length: 128;
+  text-anchor: start;
+  x: 62%;
+  y: 82%;
+  fill: black;
+}
+
 #batteryIcon {
-  x: 50%;
-  y: 76%;
+  x: 48%;
+  y: 87%;
   width: "35";
   height: "20";
   fill: black; 
@@ -94,25 +112,7 @@
   font-family: System-Bold;
   text-length: 80;
   text-anchor: start;
-  x: 64%;
-  y: 82%;
-  fill: black
-}
-
-#tempIcon {
-  x: 53%;
-  y: 85%;
-  width: "16";
-  height: "29";
-  fill: black;
-}
-
-#tempLabel {
-  font-size: 28;
-  font-family: System-Bold;
-  text-length: 128;
-  text-anchor: start;
-  x: 64%;
+  x: 62%;
   y: 92%;
-  fill: black;
+  fill: black
 }
