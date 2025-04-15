@@ -35,8 +35,7 @@ clock.granularity = "minutes";
 
 // Get a handle on the <text> elements
 let dateLabel = document.getElementById("dateLabel");
-const amLabel = document.getElementById("amLabel");
-const pmLabel = document.getElementById("pmLabel");
+const amPmLabel = document.getElementById("amPmLabel");
 const digitalClockLabel = document.getElementById("digitalClockLabel");
 let hourHand = document.getElementById("hourHand"); // TODO review let vs const
 let minuteHand = document.getElementById("minuteHand"); // TODO review let vs const
@@ -194,11 +193,9 @@ function amPmDisplay(evt) {
     let rawHours = evt.date.getHours();
 
     if (rawHours < 12) {
-        amLabel.text = "AM";
-        pmLabel.text = "";
+        amPmLabel.text = "AM";
       } else {
-        amLabel.text = "";
-        pmLabel.text = "PM";
+        amPmLabel.text = "PM";
       }
 }
 

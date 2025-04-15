@@ -32,7 +32,7 @@
   fill: black;
 }
 
-#amLabel {
+#amPmLabel {
   font-size: 23;
   font-family: System-Bold;
   text-length: 80;
@@ -42,21 +42,12 @@
   fill: black
 }
 
-#pmLabel {
-  font-size: 23;
-  font-family: System-Bold;
-  text-length: 80;
-  text-anchor: end;
-  x: 96%;
-  y: 37%;
-  fill: black
-}
 #digitalClockLabel {
   font-size: 100;
   font-family: FBNucleon-Bold;
   text-length: 80;
   text-anchor: middle;
-  x: 50%;
+  x: 55%;
   y: 55%;
   fill: black;
 }

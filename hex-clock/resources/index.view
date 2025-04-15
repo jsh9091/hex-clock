@@ -28,8 +28,7 @@
   
   <text id="dateLabel" />
 
-  <text id="amLabel" />
-  <text id="pmLabel" />
+  <text id="amPmLabel" />
 
   <text id="digitalClockLabel" />
 
