@@ -30,6 +30,8 @@
 
   <text id="amPmLabel" />
 
+  <text id="hexLabel">Hex:</text>
+
   <text id="digitalClockLabel" />
 
   <!-- analog clock -->

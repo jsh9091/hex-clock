@@ -42,6 +42,16 @@
   fill: black
 }
 
+#hexLabel {
+  font-size: 50;
+  font-family: FBCondensed-Regular;
+  text-length: 80;
+  text-anchor: start;
+  x: 4%;
+  y: 55%;
+  fill: black;
+}
+
 #digitalClockLabel {
   font-size: 100;
   font-family: FBNucleon-Bold;
