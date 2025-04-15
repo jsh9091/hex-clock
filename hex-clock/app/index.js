@@ -207,27 +207,34 @@ function amPmDisplay(evt) {
  * @param {*} evt 
  */
 function updateDateField(evt) {
-    const monthNames = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-    ];
-
     let day = getDayField(evt);
-    let month = monthNames[evt.date.getMonth()];
-    let dayOfMonth = evt.date.getDate();
+    let dayOfMonth = getMonth(evt);
     let year = evt.date.getUTCFullYear();
 
     dateLabel.text =  `${day}` + " " +  `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;
+}
+
+/**
+ * Gets the current month.
+ * @param {*} evt 
+ * @returns 
+ */
+function getMonth(evt) {
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return monthNames[evt.date.getMonth()];
 }
 
 /**
@@ -235,14 +242,10 @@ function updateDateField(evt) {
  * @param {*} evt 
  * @returns 
  */
-function getDayField(evt) { // TODO review and maybe remove
-
+function getDayField(evt) {
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
     let index = evt.date.getDay();
-    let day = dayNames[index];
-
-    return day;
+    return dayNames[index];
 }
 
 /**
