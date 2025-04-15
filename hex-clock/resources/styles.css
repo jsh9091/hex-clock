@@ -22,42 +22,14 @@
  * SOFTWARE.
  */
 
-#stepCountLabel {
-  font-size: 30;
-  font-family: System-Regular;
+#dateLabel {
+  font-size: 40;
+  font-family: System-Bold;
   text-length: 80;
-  text-anchor: start;
-  x: 19%;
-  y: 20%;
-  fill: aqua
-}
-
-#stepsIcon {
-  x: 6%;
-  y: 14%;
-  width: "35";
-  height: "25";
-  fill: aqua; 
-  opacity: 1;
-}
-
-#batteryLabel {
-  font-size: 30;
-  font-family: System-Regular;
-  text-length: 80;
-  text-anchor: end;
-  x: 81%;
-  y: 20%;
-  fill: aqua
-}
-
-#batteryIcon {
-  x: 83%;
-  y: 14%;
-  width: "35";
-  height: "20";
-  fill: aqua; 
-  opacity: 1; 
+  text-anchor: middle;
+  x: 50%;
+  y: 25%;
+  fill: black;
 }
 
 #amLabel {
@@ -89,23 +61,49 @@
   fill: black;
 }
 
-#weekdayLabel {
-  font-size: 28;
-  font-family: System-Bold;
-  text-length: 80;
-  text-anchor: middle;
-  x: 67%;
-  y: 70%;
-  fill: black;
+#stepsIcon {
+  x: 50%;
+  y: 65%;
+  width: "35";
+  height: "25";
+  fill: black; 
+  opacity: 1;
 }
 
-#dateLabel {
-  font-size: 28;
+#stepCountLabel {
+  font-size: 30;
   font-family: System-Bold;
   text-length: 80;
-  text-anchor: middle;
-  x: 67%;
-  y: 81%;
+  text-anchor: start;
+  x: 64%;
+  y: 72%;
+  fill: black
+}
+
+#batteryIcon {
+  x: 50%;
+  y: 76%;
+  width: "35";
+  height: "20";
+  fill: black; 
+  opacity: 1; 
+}
+
+#batteryLabel {
+  font-size: 30;
+  font-family: System-Bold;
+  text-length: 80;
+  text-anchor: start;
+  x: 64%;
+  y: 82%;
+  fill: black
+}
+
+#tempIcon {
+  x: 53%;
+  y: 85%;
+  width: "16";
+  height: "29";
   fill: black;
 }
 
@@ -113,16 +111,8 @@
   font-size: 28;
   font-family: System-Bold;
   text-length: 128;
-  text-anchor: end;
-  x: 72%;
+  text-anchor: start;
+  x: 64%;
   y: 92%;
-  fill: black;
-}
-
-#tempIcon {
-  x: 74%;
-  y: 85%;
-  width: "16";
-  height: "29";
   fill: black;
 }

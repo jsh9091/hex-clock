@@ -34,17 +34,16 @@ import * as newfile from "./newfile";
 clock.granularity = "minutes";
 
 // Get a handle on the <text> elements
+let dateLabel = document.getElementById("dateLabel");
+const amLabel = document.getElementById("amLabel");
+const pmLabel = document.getElementById("pmLabel");
+const digitalClockLabel = document.getElementById("digitalClockLabel");
+let hourHand = document.getElementById("hourHand"); // TODO review let vs const
+let minuteHand = document.getElementById("minuteHand"); // TODO review let vs const
 const stepCountLabel = document.getElementById("stepCountLabel");
 const stepsIcon = document.getElementById("stepsIcon");
 const batteryLabel = document.getElementById("batteryLabel");
 const batteryIcon = document.getElementById("batteryIcon");
-const amLabel = document.getElementById("amLabel");
-const pmLabel = document.getElementById("pmLabel");
-const digitalClockLabel = document.getElementById("digitalClockLabel");
-let hourHand = document.getElementById("hourHand");
-let minuteHand = document.getElementById("minuteHand");
-let weekdayLabel = document.getElementById("weekdayLabel");
-let dateLabel = document.getElementById("dateLabel");
 const tempLabel = document.getElementById("tempLabel");
 
 /**
@@ -52,36 +51,38 @@ const tempLabel = document.getElementById("tempLabel");
  * @param {*} evt 
  */
 clock.ontick = (evt) => {
-    // handle case of user permission for step counts is not there
-    if (appbit.permissions.granted("access_activity")) {
-        stepCountLabel.text = getSteps().formatted;
-    } else {
-        stepCountLabel.text = "-----";
-    }
+  updateDateField(evt);
 
-    // get time information from API
-    let todayDate = evt.date;
-    let rawHours = todayDate.getHours();
+  amPmDisplay(evt);
 
-    let hours;
-    if (preferences.clockDisplay === "12h") {
-      // 12 hour format
-      hours = rawHours % 12 || 12;
-    } else {
-      // 24 hour format
-      hours = rawHours;
-    }
+  // get time information from API
+  let todayDate = evt.date;
+  let rawHours = todayDate.getHours();
 
-    let mins = todayDate.getMinutes();
+  let hours;
+  if (preferences.clockDisplay === "12h") {
+    // 12 hour format
+    hours = rawHours % 12 || 12;
+  } else {
+    // 24 hour format
+    hours = rawHours;
+  }
 
-    // display time on main digital clock
-    digitalClockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
+  let mins = todayDate.getMinutes();
 
-    updateAnalogClock();
-    amPmDisplay(evt);
-    updateDateField(evt);
-    updateDayField(evt);
-    updateBattery();
+  // display time on main digital clock
+  digitalClockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
+
+  updateAnalogClock();
+
+  // handle case of user permission for step counts is not there
+  if (appbit.permissions.granted("access_activity")) {
+    stepCountLabel.text = getSteps().formatted;
+  } else {
+    stepCountLabel.text = "-----";
+  }
+
+  updateBattery();
 };
 
 /**
@@ -221,25 +222,27 @@ function updateDateField(evt) {
         "Dec",
     ];
 
+    let day = getDayField(evt);
     let month = monthNames[evt.date.getMonth()];
     let dayOfMonth = evt.date.getDate();
     let year = evt.date.getUTCFullYear();
 
-    dateLabel.text = `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;
+    dateLabel.text =  `${day}` + " " +  `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;
 }
 
 /**
  * Updates day of week displayed. 
  * @param {*} evt 
+ * @returns 
  */
-function updateDayField(evt) {
+function getDayField(evt) { // TODO review and maybe remove
 
-    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     let index = evt.date.getDay();
     let day = dayNames[index];
 
-    weekdayLabel.text = day;
+    return day;
 }
 
 /**
@@ -270,4 +273,3 @@ newfile.initialize(data => {
     }
     return data
   }
-  

@@ -22,26 +22,16 @@
   SOFTWARE. -->
 
 <svg>
-  <rect x="0" y="0" width="100%" height="30%" fill="black" />
+  <rect x="0" y="0" width="100%" height="30%" fill="yellow" />
   <rect x="5" y="30%" width="97%" height="30%" fill="aqua" id="clockbox" />
   <rect x="0" y="60%" width="100%" height="45%" fill="yellow" />
-
-  <text id="stepCountLabel" />
-  <image id="stepsIcon" href="steps.png" />
-
-  <text id="batteryLabel" />
-  <image id="batteryIcon" href="battery-full.png" />
+  
+  <text id="dateLabel" />
 
   <text id="amLabel" />
   <text id="pmLabel" />
 
   <text id="digitalClockLabel" />
-
-  <text id="weekdayLabel" />
-  <text id="dateLabel" />
-
-  <text id="tempLabel" />
-  <image id="tempIcon" href="thermometer.png" />
 
   <!-- analog clock -->
   <circle cx="23%" cy="77%" r="45" fill="black" />
@@ -52,5 +42,14 @@
     <rect x="$-3" y="-35" width="3" height="39" fill="#fcfcfc" />
   </g>
   <circle cx="23%" cy="77%" r="6" fill="white" />
+
+  <text id="stepCountLabel" />
+  <image id="stepsIcon" href="steps.png" />
+
+  <text id="batteryLabel" />
+  <image id="batteryIcon" href="battery-full.png" />
+  
+  <text id="tempLabel" />
+  <image id="tempIcon" href="thermometer.png" />
 
 </svg>
