@@ -50,6 +50,7 @@
   x: 4%;
   y: 55%;
   fill: black;
+  text-decoration: underline;
 }
 
 #digitalClockLabel {

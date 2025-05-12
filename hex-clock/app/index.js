@@ -209,7 +209,7 @@ function updateDateField(evt) {
     let month = getMonth(evt);
     let year = evt.date.getUTCFullYear();
 
-    dateLabel.text =  `${day}` + " " +  `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;
+    dateLabel.text =  `${day}` + " | " +  `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;
 }
 
 /**

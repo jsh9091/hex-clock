@@ -43,6 +43,7 @@
     <rect x="$-3" y="-35" width="3" height="39" fill="#fcfcfc" />
   </g>
   <circle cx="23%" cy="77%" r="6" fill="white" />
+  <!-- end analog clock -->
 
   <text id="stepCountLabel" />
   <image id="stepsIcon" href="steps.png" />
