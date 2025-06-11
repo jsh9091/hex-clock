@@ -34,12 +34,13 @@ import * as newfile from "./newfile";
 clock.granularity = "minutes";
 
 // Get a handle on the <text> elements
+let stepsBarOutline = document.getElementById("stepsBarOutline");
 let stepsProgressBar = document.getElementById("stepsProgressBar");
 let dateLabel = document.getElementById("dateLabel");
 const amPmLabel = document.getElementById("amPmLabel");
 const digitalClockLabel = document.getElementById("digitalClockLabel");
-let hourHand = document.getElementById("hourHand"); // TODO review let vs const
-let minuteHand = document.getElementById("minuteHand"); // TODO review let vs const
+let hourHand = document.getElementById("hourHand");
+let minuteHand = document.getElementById("minuteHand");
 const stepCountLabel = document.getElementById("stepCountLabel");
 const stepsIcon = document.getElementById("stepsIcon");
 const batteryLabel = document.getElementById("batteryLabel");
@@ -98,6 +99,7 @@ function updateActivity() {
 
   } else {
     stepCountLabel.text = "-----";
+    stepsBarOutline.style.fill = "yellow"; 
   }
 }
 
