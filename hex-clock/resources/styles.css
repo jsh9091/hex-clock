@@ -23,7 +23,7 @@
  */
 
 #dateLabel {
-  font-size: 38;
+  font-size: 35;
   font-family: System-Bold;
   text-length: 80;
   text-anchor: middle;
@@ -33,12 +33,12 @@
 }
 
 #amPmLabel {
-  font-size: 23;
+  font-size: 25;
   font-family: System-Bold;
   text-length: 80;
   text-anchor: start;
   x: 4%;
-  y: 37%;
+  y: 38%;
   fill: aqua
 }
 
