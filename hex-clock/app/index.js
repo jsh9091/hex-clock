@@ -25,7 +25,7 @@
 import clock from "clock";
 import * as document from "document";
 import { me as appbit } from "appbit";
-import { today as activity } from "user-activity";
+import { today as activity, goals } from "user-activity";
 import { preferences, units } from "user-settings";
 import { battery } from "power";
 import * as newfile from "./newfile";
@@ -34,6 +34,7 @@ import * as newfile from "./newfile";
 clock.granularity = "minutes";
 
 // Get a handle on the <text> elements
+let stepsProgressBar = document.getElementById("stepsProgressBar");
 let dateLabel = document.getElementById("dateLabel");
 const amPmLabel = document.getElementById("amPmLabel");
 const digitalClockLabel = document.getElementById("digitalClockLabel");
@@ -73,14 +74,7 @@ clock.ontick = (evt) => {
   digitalClockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
 
   updateAnalogClock();
-
-  // handle case of user permission for step counts is not there
-  if (appbit.permissions.granted("access_activity")) {
-    stepCountLabel.text = getSteps().formatted;
-  } else {
-    stepCountLabel.text = "-----";
-  }
-
+  updateActivity();
   updateBattery();
 };
 
@@ -91,6 +85,41 @@ clock.ontick = (evt) => {
  */
 function decimalToHexString(number) {
   return number.toString(16).toUpperCase();
+}
+
+/**
+ * Updates user physical activty displays. 
+ */
+function updateActivity() {
+  // handle case of user permission for step counts is not there
+  if (appbit.permissions.granted("access_activity")) {
+    stepCountLabel.text = getSteps().formatted;
+    updateStepsProgressBar();
+
+  } else {
+    stepCountLabel.text = "-----";
+  }
+}
+
+/**
+ * Updates the steps goal progress bar. 
+ */
+function updateStepsProgressBar() {
+  const barMaxWidth = 230;
+  let steps = activity.adjusted["steps"];
+
+  if (steps == null || steps == undefined) {
+    steps = 0;
+  } else if (steps > goals.steps) {
+    steps = goals.steps;
+  }
+  const stepGoalPercentage = steps * 100 / goals.steps;
+  let barWidth = (stepGoalPercentage / 100) * barMaxWidth;
+
+  // bar should not exceed max width
+  barWidth = barWidth > barMaxWidth ? barMaxWidth : barWidth;
+
+  stepsProgressBar.width = barWidth;
 }
 
 /**
