@@ -30,19 +30,27 @@ import { preferences, units } from "user-settings";
 import { battery } from "power";
 import * as newfile from "./newfile";
 
+let color = "yellow";
+
 // Update the clock every second
 clock.granularity = "minutes";
 
 // Get a handle on the <text> elements
+let topBox = document.getElementById("topBox");
+let bottomBox = document.getElementById("bottomBox");
 let stepsBarOutline = document.getElementById("stepsBarOutline");
 let stepsProgressBar = document.getElementById("stepsProgressBar");
 let dateLabel = document.getElementById("dateLabel");
 const amPmLabel = document.getElementById("amPmLabel");
+const hexLabel = document.getElementById("hexLabel");
 const digitalClockLabel = document.getElementById("digitalClockLabel");
 let hourHand = document.getElementById("hourHand");
 let minuteHand = document.getElementById("minuteHand");
+let clockHourHand = document.getElementById("clockHourHand");
+let clockMinuteHand = document.getElementById("clockMinuteHand");
+let clockCenter = document.getElementById("clockCenter");
 const stepCountLabel = document.getElementById("stepCountLabel");
-const stepsIcon = document.getElementById("stepsIcon");
+
 const batteryLabel = document.getElementById("batteryLabel");
 const batteryIcon = document.getElementById("batteryIcon");
 const tempLabel = document.getElementById("tempLabel");
@@ -74,10 +82,23 @@ clock.ontick = (evt) => {
   // display time on main digital clock
   digitalClockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
 
+  updateColor();
   updateAnalogClock();
   updateActivity();
   updateBattery();
 };
+
+function updateColor() {
+  topBox.style.fill = color;
+  stepsProgressBar.style.fill = color;
+  amPmLabel.style.fill = color;
+  hexLabel.style.fill = color;
+  digitalClockLabel.style.fill = color;
+  bottomBox.style.fill = color;
+  clockHourHand.style.fill = color;
+  clockMinuteHand.style.fill = color;
+  clockCenter.style.fill = color;
+}
 
 /**
  * Converts a decimal number to a hexadecimal number. 
@@ -96,10 +117,11 @@ function updateActivity() {
   if (appbit.permissions.granted("access_activity")) {
     stepCountLabel.text = getSteps().formatted;
     updateStepsProgressBar();
+    stepsBarOutline.style.fill = "black";
 
   } else {
     stepCountLabel.text = "-----";
-    stepsBarOutline.style.fill = "yellow"; 
+    stepsBarOutline.style.fill = color; 
   }
 }
 

@@ -23,12 +23,12 @@
 
 <svg>
   <!-- main layout rectangles -->
-  <rect x="0" y="0" width="100%" height="30%" fill="yellow" />
-  <rect x="5" y="30%" width="97%" height="30%" fill="aqua" id="clockbox" />
-  <rect x="0" y="60%" width="100%" height="45%" fill="yellow" />
+  <rect x="0" y="0" width="100%" height="30%" fill="aqua" id="topBox" />
+  <rect x="5" y="30%" width="97%" height="30%" fill="black" id="clockbox" />
+  <rect x="0" y="60%" width="100%" height="45%" fill="aqua" id="bottomBox" />
 
   <rect x="50" y="25" width="236" height="15" fill="black" id="stepsBarOutline" />
-  <rect x="53" y="28" width="230" height="9" fill="yellow" id="stepsProgressBar" />
+  <rect x="53" y="28" width="230" height="9" fill="aqua" id="stepsProgressBar" />
   
   <text id="dateLabel" />
 
@@ -41,12 +41,12 @@
   <!-- analog clock -->
   <circle cx="23%" cy="77%" r="45" fill="black" />
   <g id="hourHand" pointer-events="visible" transform="translate(23%,77%)">
-    <rect x="$-3" y="-22" width="4" height="20" fill="#fcfcfc" />
+    <rect x="$-3" y="-22" width="4" height="20" fill="white" id="clockHourHand" />
   </g>
   <g id="minuteHand" pointer-events="visible" transform="translate(23%,77%)">
-    <rect x="$-3" y="-35" width="3" height="39" fill="#fcfcfc" />
+    <rect x="$-3" y="-35" width="3" height="39" fill="white" id="clockMinuteHand" />
   </g>
-  <circle cx="23%" cy="77%" r="6" fill="white" />
+  <circle cx="23%" cy="77%" r="6" fill="white" id="clockCenter" />
   <!-- end analog clock -->
 
   <text id="stepCountLabel" />
