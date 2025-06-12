@@ -130,23 +130,9 @@ function updateActivity() {
  */
 function updateStepsProgressBar() {
   const barMaxWidth = 230;
-  const defaultGoal = 10000;
 
-  let steps = activity.adjusted["steps"];
-
-  if (steps == null || steps == undefined) {
-    steps = 0;
-  } else if (steps > goals.steps) {
-    steps = goals.steps;
-  }
-
-  let stepGoal = goals.steps;
-
-  // validate steps goal value
-  if (stepGoal == null || stepGoal == undefined || stepGoal < 1) {
-    // if there was a problem, use default value
-    stepGoal = defaultGoal;
-  }
+  let steps = getSteps().raw;
+  let stepGoal = getValidatedStepGoal();
 
   const stepGoalPercentage = steps * 100 / stepGoal;
   let barWidth = (stepGoalPercentage / 100) * barMaxWidth;
@@ -204,6 +190,23 @@ function getSteps() {
           ? `${Math.floor(val / 1000)},${("00" + (val % 1000)).slice(-3)}`
           : val,
     };
+}
+
+/**
+ * Gets step goal and validate the value. 
+ * If there is a problem a default value is returned.
+ * @returns 
+ */
+function getValidatedStepGoal() {
+  const defaultGoal = 10000;
+  let stepGoal = goals.steps;
+
+  // validate steps goal value
+  if (stepGoal == null || stepGoal == undefined || stepGoal < 1) {
+    // if there was a problem, use default value
+    stepGoal = defaultGoal;
+  }
+  return stepGoal;
 }
 
 /**
