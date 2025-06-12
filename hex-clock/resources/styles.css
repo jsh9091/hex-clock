@@ -48,18 +48,18 @@
   text-length: 80;
   text-anchor: start;
   x: 4%;
-  y: 57%;
+  y: 56%;
   fill: aqua;
   text-decoration: underline;
 }
 
 #digitalClockLabel {
-  font-size: 100;
+  font-size: 90;
   font-family: FBNucleon-Bold;
   text-length: 80;
   text-anchor: start;
-  x: 28%;
-  y: 57%;
+  x: 27%;
+  y: 56%;
   fill: aqua;
 }
 
