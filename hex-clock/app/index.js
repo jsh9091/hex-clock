@@ -31,7 +31,7 @@ import { battery } from "power";
 import * as newfile from "./newfile";
 import * as simpleSettings from "./simple/device-settings";
 
-let color = "yellow";
+let color = "aqua";
 
 // Update the clock every second
 clock.granularity = "minutes";
@@ -67,10 +67,18 @@ function settingsCallback(data) {
   }
 
   if (data.color) {
-    console.log(data.color);
     color = data.color;
-  }
 
+    topBox.style.fill = color;
+    bottomBox.style.fill = color;
+    stepsProgressBar.style.fill = color;
+    amPmLabel.style.fill = color;
+    hexLabel.style.fill = color;
+    digitalClockLabel.style.fill = color;
+    clockHourHand.style.fill = color;
+    clockMinuteHand.style.fill = color;
+    clockCenter.style.fill = color;
+  }
 }
 simpleSettings.initialize(settingsCallback);
 
