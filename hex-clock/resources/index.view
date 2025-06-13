@@ -44,7 +44,7 @@
     <rect x="$-3" y="-22" width="4" height="20" fill="white" id="clockHourHand" />
   </g>
   <g id="minuteHand" pointer-events="visible" transform="translate(23%,79%)">
-    <rect x="$-3" y="-35" width="3" height="39" fill="white" id="clockMinuteHand" />
+    <rect x="$-2" y="-35" width="3" height="39" fill="white" id="clockMinuteHand" />
   </g>
   <circle cx="23%" cy="79%" r="6" fill="white" id="clockCenter" />
   <!-- end analog clock -->

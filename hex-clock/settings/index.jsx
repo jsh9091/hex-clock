@@ -3,11 +3,21 @@ registerSettingsPage(({ settings }) => (
     <Section
       title={
         <Text bold align="center">
-          App Settings
+          Language Clock Settings
         </Text>
       }
     >
-      <Text>Hello world!</Text>
+      <ColorSelect
+        settingsKey="color"
+        colors={[
+          { color: "aqua" },
+          { color: "red" },
+          { color: "gold" },
+          { color: "orchid" },
+          { color: "limegreen" },
+          { color: "darkgoldenrod" },
+        ]}
+      />
     </Section>
   </Page>
 ));

@@ -29,13 +29,14 @@ import { today as activity, goals } from "user-activity";
 import { preferences, units } from "user-settings";
 import { battery } from "power";
 import * as newfile from "./newfile";
+import * as simpleSettings from "./simple/device-settings";
 
 let color = "yellow";
 
 // Update the clock every second
 clock.granularity = "minutes";
 
-// Get a handle on the <text> elements
+// Get a handle on the SVG elements
 let topBox = document.getElementById("topBox");
 let bottomBox = document.getElementById("bottomBox");
 let stepsBarOutline = document.getElementById("stepsBarOutline");
@@ -54,6 +55,24 @@ const stepCountLabel = document.getElementById("stepCountLabel");
 const batteryLabel = document.getElementById("batteryLabel");
 const batteryIcon = document.getElementById("batteryIcon");
 const tempLabel = document.getElementById("tempLabel");
+
+/**
+ * Get and process settings changes.
+ * @param {*} data 
+ * @returns 
+ */
+function settingsCallback(data) {
+  if (!data) {
+    return;
+  }
+
+  if (data.color) {
+    console.log(data.color);
+    color = data.color;
+  }
+
+}
+simpleSettings.initialize(settingsCallback);
 
 /**
  * Update the display of clock values.
