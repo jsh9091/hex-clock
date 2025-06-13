@@ -37,19 +37,19 @@ let color = "aqua";
 clock.granularity = "minutes";
 
 // Get a handle on the SVG elements
-let topBox = document.getElementById("topBox");
-let bottomBox = document.getElementById("bottomBox");
-let stepsBarOutline = document.getElementById("stepsBarOutline");
-let stepsProgressBar = document.getElementById("stepsProgressBar");
-let dateLabel = document.getElementById("dateLabel");
+const topBox = document.getElementById("topBox");
+const bottomBox = document.getElementById("bottomBox");
+const stepsBarOutline = document.getElementById("stepsBarOutline");
+const stepsProgressBar = document.getElementById("stepsProgressBar");
+const dateLabel = document.getElementById("dateLabel");
 const amPmLabel = document.getElementById("amPmLabel");
 const hexLabel = document.getElementById("hexLabel");
 const digitalClockLabel = document.getElementById("digitalClockLabel");
-let hourHand = document.getElementById("hourHand");
-let minuteHand = document.getElementById("minuteHand");
-let clockHourHand = document.getElementById("clockHourHand");
-let clockMinuteHand = document.getElementById("clockMinuteHand");
-let clockCenter = document.getElementById("clockCenter");
+const hourHand = document.getElementById("hourHand");
+const minuteHand = document.getElementById("minuteHand");
+const clockHourHand = document.getElementById("clockHourHand");
+const clockMinuteHand = document.getElementById("clockMinuteHand");
+const clockCenter = document.getElementById("clockCenter");
 const stepCountLabel = document.getElementById("stepCountLabel");
 
 const batteryLabel = document.getElementById("batteryLabel");
