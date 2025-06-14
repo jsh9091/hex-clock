@@ -28,6 +28,31 @@ import { settingsStorage } from "settings";
 const KEY_COLOR = "color";
 
 /**
+ * Establishes values for default settings on fresh install.
+ */
+export function setDefaultSettings() {
+  setDefaultSetting(KEY_COLOR, "aqua");
+}
+
+/**
+ * If the given key does not have a value set for display 
+ * on phone settings screen, then the provided value is set. 
+ * This only affects what is set as selection on phone screen, 
+ * does not communicate to watch, so default setting must be 
+ * manually matched in watch "app" code. 
+ * @param {*} key 
+ * @param {*} value 
+ */
+function setDefaultSetting(key, value) {
+  // get the actual currently set value 
+  let extantValue = settingsStorage.getItem(key);
+  if (extantValue === null) {
+    // we don't have set selected item, so set the default
+    settingsStorage.setItem(key, JSON.stringify(value));
+  }
+}
+
+/**
  * Initializes getting of settings and processing inputs. 
  */
 export function initialize() {

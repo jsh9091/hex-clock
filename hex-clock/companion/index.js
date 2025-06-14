@@ -29,6 +29,7 @@ import { weather } from "weather";
 import { dataFile, wakeTime } from "../common/constants";
 import * as simpleSettings from "./simple/companion-settings";
 
+simpleSettings.setDefaultSettings();
 simpleSettings.initialize();
 
 /**
