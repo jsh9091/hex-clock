@@ -32,6 +32,7 @@ import * as newfile from "./newfile";
 import * as simpleSettings from "./simple/device-settings";
 
 let color = "aqua";
+let mode = null;
 
 // Update the clock every second
 clock.granularity = "minutes";
@@ -78,6 +79,15 @@ function settingsCallback(data) {
     clockHourHand.style.fill = color;
     clockMinuteHand.style.fill = color;
     clockCenter.style.fill = color;
+  }
+  
+  if (mode == null) {
+    // set default mode
+    mode = "Hexadecimal"
+  }
+
+  if (data.numberMode) {
+    console.log(data.numberMode);
   }
 }
 simpleSettings.initialize(settingsCallback);

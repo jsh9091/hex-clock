@@ -64,6 +64,10 @@ export function initialize() {
       let newValue = "";
       if (evt.key == KEY_COLOR) {
         newValue = evt.newValue;
+
+      } else if (evt.key == KEY_MODE) {
+        let rawName = JSON.parse(evt.newValue).values[0].name;
+        newValue = '"' + rawName + '"';
       }
 
       sendValue(evt.key, newValue);
