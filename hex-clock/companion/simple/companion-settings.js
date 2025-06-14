@@ -26,12 +26,14 @@ import * as messaging from "messaging";
 import { settingsStorage } from "settings";
 
 const KEY_COLOR = "color";
+const KEY_MODE = "numberMode";
 
 /**
  * Establishes values for default settings on fresh install.
  */
 export function setDefaultSettings() {
   setDefaultSetting(KEY_COLOR, "aqua");
+  setDefaultSetting(KEY_MODE, {"selected":[0],"values":[{"name":"Hexadecimal","value":0}]});
 }
 
 /**
