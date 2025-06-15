@@ -34,7 +34,7 @@
 
   <text id="amPmLabel" />
 
-  <text id="hexLabel">Hex:</text>
+  <text id="hexLabel" />
 
   <text id="digitalClockLabel" />
 

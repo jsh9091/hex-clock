@@ -88,9 +88,31 @@ function settingsCallback(data) {
 
   if (data.numberMode) {
     console.log(data.numberMode);
+    mode = data.numberMode;
+    updateModeDisplay();
   }
 }
 simpleSettings.initialize(settingsCallback);
+
+/**
+ * Update display for number mode changes. 
+ */
+function updateModeDisplay() {
+  hexLabel.style.textDecoration = "none";
+
+  switch (mode) {
+    case "Hexadecimal":
+      hexLabel.text = "Hex:"
+      break;
+    case "Standard Decimal":
+      hexLabel.text = "Dec:"
+      break;
+    case "Full Hexadecimal":
+      hexLabel.style.textDecoration = "underline";
+      hexLabel.text = "Hex:"
+      break;
+  }
+}
 
 /**
  * Update the display of clock values.
