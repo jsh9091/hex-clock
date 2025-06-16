@@ -32,7 +32,9 @@ import * as newfile from "./newfile";
 import * as simpleSettings from "./simple/device-settings";
 
 let color = "aqua";
-let mode = null;
+let mode = "Hexadecimal";
+let hoursLastTick;
+let minutesLastTick;
 
 // Update the clock every second
 clock.granularity = "minutes";
@@ -117,6 +119,9 @@ function updateModeDisplay() {
       hexLabel.text = "Hex:"
       break;
   }
+  if (hoursLastTick != undefined && minutesLastTick != undefined) {
+    updateTimeDisplay();
+  } 
 }
 
 /**
@@ -130,7 +135,22 @@ clock.ontick = (evt) => {
 
   // get time information from API
   let todayDate = evt.date;
-  let rawHours = todayDate.getHours();
+  hoursLastTick = todayDate.getHours();
+  minutesLastTick = todayDate.getMinutes();
+
+  updateTimeDisplay();
+  updateColor();
+  updateAnalogClock();
+  updateActivity();
+  updateBattery();
+};
+
+/**
+ * Updates the main time display label. 
+ */
+function updateTimeDisplay() {
+  
+  let rawHours = hoursLastTick;
 
   let hours;
   if (preferences.clockDisplay === "12h") {
@@ -141,17 +161,20 @@ clock.ontick = (evt) => {
     hours = rawHours;
   }
 
-  let mins = todayDate.getMinutes();
+  let mins = minutesLastTick;
 
-  // display time on main digital clock
-  digitalClockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
+  if (mode === "Standard Decimal") {
+    // display decimal time on main digital clock
+    digitalClockLabel.text = `${hours}:${mins}`;
+  } else {
+    // display Hex time on main digital clock
+    digitalClockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
+  }
+}
 
-  updateColor();
-  updateAnalogClock();
-  updateActivity();
-  updateBattery();
-};
-
+/**
+ * Updates the color of the watch display. 
+ */
 function updateColor() {
   topBox.style.fill = color;
   stepsProgressBar.style.fill = color;
