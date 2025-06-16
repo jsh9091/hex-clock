@@ -98,7 +98,12 @@ simpleSettings.initialize(settingsCallback);
  * Update display for number mode changes. 
  */
 function updateModeDisplay() {
+  // resets
   hexLabel.style.textDecoration = "none";
+  digitalClockLabel.style.fontFamily = "FBNucleon-Bold";
+  digitalClockLabel.style.fontSize = 90;
+  digitalClockLabel.x = 91;
+  digitalClockLabel.y = 188;
 
   switch (mode) {
     case "Hexadecimal":
