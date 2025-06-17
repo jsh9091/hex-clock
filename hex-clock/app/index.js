@@ -128,7 +128,6 @@ function updateModeDisplay() {
   }
   updateActivity();
   updateBattery();
-
   if (temperatureCurrent != undefined) {
     updateTemperatureLabel();
   }
@@ -173,14 +172,26 @@ function updateTimeDisplay() {
   }
 
   let mins = minutesLastTick;
-
+  
   if (mode === "Standard Decimal") {
     // display decimal time on main digital clock
-    digitalClockLabel.text = `${hours}:${mins}`;
+    digitalClockLabel.text = `${hours}:${ zeroPad(mins)}`;
   } else {
     // display Hex time on main digital clock
     digitalClockLabel.text = `${decimalToHexString(hours)}:${decimalToHexString(mins)}`;
   }
+}
+
+/**
+ * Front appends a zero to an integer if less than ten.
+ * @param {*} i 
+ * @returns 
+ */
+function zeroPad(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
 }
 
 /**
