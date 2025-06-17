@@ -3,7 +3,7 @@ registerSettingsPage(({ settings }) => (
     <Section
       title={
         <Text bold align="center">
-          Language Clock Settings
+          Hex Clock Settings
         </Text>
       }
     >

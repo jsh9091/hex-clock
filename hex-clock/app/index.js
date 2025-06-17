@@ -33,8 +33,10 @@ import * as simpleSettings from "./simple/device-settings";
 
 let color = "aqua";
 let mode = "Hexadecimal";
+let fullHex = false;
 let hoursLastTick;
 let minutesLastTick;
+let temperatureCurrent;
 
 // Update the clock every second
 clock.granularity = "minutes";
@@ -101,6 +103,7 @@ simpleSettings.initialize(settingsCallback);
  */
 function updateModeDisplay() {
   // resets
+  fullHex = false;
   hexLabel.style.textDecoration = "none";
   digitalClockLabel.style.fontFamily = "FBNucleon-Bold";
   digitalClockLabel.style.fontSize = 90;
@@ -117,11 +120,18 @@ function updateModeDisplay() {
     case "Full Hexadecimal":
       hexLabel.style.textDecoration = "underline";
       hexLabel.text = "Hex:"
+      fullHex = true;
       break;
   }
   if (hoursLastTick != undefined && minutesLastTick != undefined) {
     updateTimeDisplay();
-  } 
+  }
+  updateActivity();
+  updateBattery();
+
+  if (temperatureCurrent != undefined) {
+    updateTemperatureLabel();
+  }
 }
 
 /**
@@ -135,6 +145,7 @@ clock.ontick = (evt) => {
 
   // get time information from API
   let todayDate = evt.date;
+  // update global values
   hoursLastTick = todayDate.getHours();
   minutesLastTick = todayDate.getMinutes();
 
@@ -202,7 +213,14 @@ function decimalToHexString(number) {
 function updateActivity() {
   // handle case of user permission for step counts is not there
   if (appbit.permissions.granted("access_activity")) {
-    stepCountLabel.text = getSteps().formatted;
+    if (fullHex) {
+      // display steps in hex
+      stepCountLabel.text = decimalToHexString(getSteps().raw)
+    } else {
+      // display steps with normal decimal numbers
+      stepCountLabel.text = getSteps().formatted;
+    }
+    
     updateStepsProgressBar();
     stepsBarOutline.style.fill = "black";
 
@@ -318,7 +336,13 @@ function updateBattery() {
  */
 function updateBatteryLabel() {
     let percentSign = "&#x25";
-    batteryLabel.text = battery.chargeLevel + percentSign;
+    if (fullHex) {
+      // display battery percentage in hex 
+      batteryLabel.text = decimalToHexString(battery.chargeLevel) + percentSign;
+    } else {
+      // display battery percentage with normal decimal numbers
+      batteryLabel.text = battery.chargeLevel + percentSign;
+    }
 }
 
 /**
@@ -405,17 +429,36 @@ function getDayField(evt) {
  */
 newfile.initialize(data => {
     if (appbit.permissions.granted("access_location")) {
-      
-      data = units.temperature === "C" ? data : toFahrenheit(data);
+      temperatureCurrent = units.temperature === "C" ? data : toFahrenheit(data);
+      updateTemperatureLabel();
+    }
+
+    updateTemperatureLabel();
+  });
+
+  /**
+   * Updates the temperature label. 
+   */
+  function updateTemperatureLabel() {
+    if (appbit.permissions.granted("access_location")) {
       let degreeSymbol = "\u00B0";
       let lettertMarker = units.temperature === "C" ? `C` : `F`;
       
       // set values in GUI
-      tempLabel.text = `${data.temperature}` + degreeSymbol + lettertMarker;
+      tempLabel.text = `${temperatureCurrent.temperature}` + degreeSymbol + lettertMarker;
+
+      if (fullHex) {
+        // display temperature in hex
+        let tempValue = decimalToHexString(temperatureCurrent.temperature);
+        tempLabel.text = `${tempValue}` + degreeSymbol + lettertMarker;
+      } else {
+        // display temperature in normal decimal numbers
+        tempLabel.text = `${temperatureCurrent.temperature}` + degreeSymbol + lettertMarker;
+      }
     } else {
       tempLabel.text = "----";
     }
-  });
+  }
   
   /**
   * Convert temperature value to Fahrenheit
