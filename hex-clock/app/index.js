@@ -122,6 +122,7 @@ function updateModeDisplay() {
       break;
   }
   if (dateLastTick != undefined) {
+    updateDateField();
     updateTimeDisplay();
   }
   updateActivity();
@@ -388,6 +389,11 @@ function updateDateField() {
     let dayOfMonth = dateLastTick.getDate();
     let month = getMonth();
     let year = dateLastTick.getUTCFullYear();
+
+    if (fullHex) {
+      dayOfMonth = decimalToHexString(dayOfMonth);
+      year = decimalToHexString(year);
+    }
 
     dateLabel.text =  `${day}` + " | " +  `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;
 }
