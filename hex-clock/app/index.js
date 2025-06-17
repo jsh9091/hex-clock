@@ -34,8 +34,7 @@ import * as simpleSettings from "./simple/device-settings";
 let color = "aqua";
 let mode = "Hexadecimal";
 let fullHex = false;
-let hoursLastTick;
-let minutesLastTick;
+let dateLastTick
 let temperatureCurrent;
 
 // Update the clock every second
@@ -91,7 +90,6 @@ function settingsCallback(data) {
   }
 
   if (data.numberMode) {
-    console.log(data.numberMode);
     mode = data.numberMode;
     updateModeDisplay();
   }
@@ -123,7 +121,7 @@ function updateModeDisplay() {
       fullHex = true;
       break;
   }
-  if (hoursLastTick != undefined && minutesLastTick != undefined) {
+  if (dateLastTick != undefined) {
     updateTimeDisplay();
   }
   updateActivity();
@@ -138,16 +136,11 @@ function updateModeDisplay() {
  * @param {*} evt 
  */
 clock.ontick = (evt) => {
-  updateDateField(evt);
+  // get time information from API, and store globally
+  dateLastTick = evt.date;
 
-  amPmDisplay(evt);
-
-  // get time information from API
-  let todayDate = evt.date;
-  // update global values
-  hoursLastTick = todayDate.getHours();
-  minutesLastTick = todayDate.getMinutes();
-
+  updateDateField();
+  amPmDisplay();
   updateTimeDisplay();
   updateColor();
   updateAnalogClock();
@@ -160,7 +153,7 @@ clock.ontick = (evt) => {
  */
 function updateTimeDisplay() {
   
-  let rawHours = hoursLastTick;
+  let rawHours = dateLastTick.getHours();
 
   let hours;
   if (preferences.clockDisplay === "12h") {
@@ -171,7 +164,7 @@ function updateTimeDisplay() {
     hours = rawHours;
   }
 
-  let mins = minutesLastTick;
+  let mins = dateLastTick.getMinutes();;
   
   if (mode === "Standard Decimal") {
     // display decimal time on main digital clock
@@ -376,10 +369,9 @@ function updateBatteryIcon() {
 
 /**
  * Updates display of AM and PM indicators. 
- * @param {*} evt 
  */
-function amPmDisplay(evt) {
-    let rawHours = evt.date.getHours();
+function amPmDisplay() {
+    let rawHours = dateLastTick.getHours();
 
     if (rawHours < 12) {
         amPmLabel.text = "AM";
@@ -390,23 +382,21 @@ function amPmDisplay(evt) {
 
 /**
  * Sets current date in GUI. 
- * @param {*} evt 
  */
-function updateDateField(evt) {
-    let day = getDayField(evt);
-    let dayOfMonth = evt.date.getDate();
-    let month = getMonth(evt);
-    let year = evt.date.getUTCFullYear();
+function updateDateField() {
+    let day = getDayField(dateLastTick);
+    let dayOfMonth = dateLastTick.getDate();
+    let month = getMonth();
+    let year = dateLastTick.getUTCFullYear();
 
     dateLabel.text =  `${day}` + " | " +  `${month}` + " " + `${dayOfMonth}` + ", " + `${year}`;
 }
 
 /**
  * Gets the current month.
- * @param {*} evt 
  * @returns 
  */
-function getMonth(evt) {
+function getMonth() {
   const monthNames = [
     "Jan",
     "Feb",
@@ -421,17 +411,16 @@ function getMonth(evt) {
     "Nov",
     "Dec",
   ];
-  return monthNames[evt.date.getMonth()];
+  return monthNames[dateLastTick.getMonth()];
 }
 
 /**
  * Updates day of week displayed. 
- * @param {*} evt 
  * @returns 
  */
-function getDayField(evt) {
+function getDayField() {
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let index = evt.date.getDay();
+    let index = dateLastTick.getDay();
     return dayNames[index];
 }
 
