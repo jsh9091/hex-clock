@@ -37,7 +37,7 @@ import {
 } from "../common/constants";
 
 let color = "aqua";
-let mode = hexadecimal;
+let mode = null;
 let dateLastTick
 let temperatureCurrent;
 
@@ -76,7 +76,26 @@ function settingsCallback(data) {
 
   if (data.color) {
     color = data.color;
+    setColor();
+  }
+  
+  if (mode == null) {
+    // set default mode
+    mode = hexadecimal;
+    updateModeDisplay();
+  }
 
+  if (data.numberMode) {
+    mode = data.numberMode;
+    updateModeDisplay();
+  }
+}
+simpleSettings.initialize(settingsCallback);
+
+/**
+ * Sets display elements to current color.
+ */
+function setColor() {
     topBox.style.fill = color;
     bottomBox.style.fill = color;
     stepsProgressBar.style.fill = color;
@@ -86,19 +105,7 @@ function settingsCallback(data) {
     clockHourHand.style.fill = color;
     clockMinuteHand.style.fill = color;
     clockCenter.style.fill = color;
-  }
-  
-  if (mode == null) {
-    // set default mode
-    mode = hexadecimal
-  }
-
-  if (data.numberMode) {
-    mode = data.numberMode;
-    updateModeDisplay();
-  }
 }
-simpleSettings.initialize(settingsCallback);
 
 /**
  * Update display for number mode changes. 

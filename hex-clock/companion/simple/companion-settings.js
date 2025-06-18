@@ -24,6 +24,7 @@
 
 import * as messaging from "messaging";
 import { settingsStorage } from "settings";
+import { hexadecimal } from "../../common/constants";
 
 const KEY_COLOR = "color";
 const KEY_MODE = "numberMode";
@@ -33,7 +34,7 @@ const KEY_MODE = "numberMode";
  */
 export function setDefaultSettings() {
   setDefaultSetting(KEY_COLOR, "aqua");
-  setDefaultSetting(KEY_MODE, {"selected":[0],"values":[{"name":"Hexadecimal","value":0}]});
+  setDefaultSetting(KEY_MODE, {"selected":[0],"values":[{"name":hexadecimal,"value":0}]});
 }
 
 /**
