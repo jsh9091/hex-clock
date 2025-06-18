@@ -30,10 +30,14 @@ import { preferences, units } from "user-settings";
 import { battery } from "power";
 import * as newfile from "./newfile";
 import * as simpleSettings from "./simple/device-settings";
+import {
+  hexadecimal,
+  standard_decimal,
+  full_hexadecimal,
+} from "../common/constants";
 
 let color = "aqua";
-let mode = "Hexadecimal";
-let fullHex = false;
+let mode = hexadecimal;
 let dateLastTick
 let temperatureCurrent;
 
@@ -86,7 +90,7 @@ function settingsCallback(data) {
   
   if (mode == null) {
     // set default mode
-    mode = "Hexadecimal"
+    mode = hexadecimal
   }
 
   if (data.numberMode) {
@@ -101,7 +105,6 @@ simpleSettings.initialize(settingsCallback);
  */
 function updateModeDisplay() {
   // resets
-  fullHex = false;
   hexLabel.style.textDecoration = "none";
   digitalClockLabel.style.fontFamily = "FBNucleon-Bold";
   digitalClockLabel.style.fontSize = 90;
@@ -109,16 +112,15 @@ function updateModeDisplay() {
   digitalClockLabel.y = 188;
 
   switch (mode) {
-    case "Hexadecimal":
+    case hexadecimal:
       hexLabel.text = "Hex:"
       break;
-    case "Standard Decimal":
+    case standard_decimal:
       hexLabel.text = "Dec:"
       break;
-    case "Full Hexadecimal":
+    case full_hexadecimal:
       hexLabel.style.textDecoration = "underline";
       hexLabel.text = "Hex:"
-      fullHex = true;
       break;
   }
   if (dateLastTick != undefined) {
@@ -167,7 +169,7 @@ function updateTimeDisplay() {
 
   let mins = dateLastTick.getMinutes();;
   
-  if (mode === "Standard Decimal") {
+  if (mode === standard_decimal) {
     // display decimal time on main digital clock
     digitalClockLabel.text = `${hours}:${ zeroPad(mins)}`;
   } else {
@@ -218,7 +220,7 @@ function decimalToHexString(number) {
 function updateActivity() {
   // handle case of user permission for step counts is not there
   if (appbit.permissions.granted("access_activity")) {
-    if (fullHex) {
+    if (isFullHex()) {
       // display steps in hex
       stepCountLabel.text = decimalToHexString(getSteps().raw)
     } else {
@@ -341,7 +343,7 @@ function updateBattery() {
  */
 function updateBatteryLabel() {
     let percentSign = "&#x25";
-    if (fullHex) {
+    if (isFullHex()) {
       // display battery percentage in hex 
       batteryLabel.text = decimalToHexString(battery.chargeLevel) + percentSign;
     } else {
@@ -390,7 +392,7 @@ function updateDateField() {
     let month = getMonth();
     let year = dateLastTick.getUTCFullYear();
 
-    if (fullHex) {
+    if (isFullHex()) {
       dayOfMonth = decimalToHexString(dayOfMonth);
       year = decimalToHexString(year);
     }
@@ -453,7 +455,7 @@ newfile.initialize(data => {
       // set values in GUI
       tempLabel.text = `${temperatureCurrent.temperature}` + degreeSymbol + lettertMarker;
 
-      if (fullHex) {
+      if (isFullHex()) {
         // display temperature in hex
         let tempValue = decimalToHexString(temperatureCurrent.temperature);
         tempLabel.text = `${tempValue}` + degreeSymbol + lettertMarker;
@@ -476,4 +478,13 @@ newfile.initialize(data => {
        data.unit = "Fahrenheit";
     }
     return data
+  }
+
+  /**
+   * Helper function to determin if the current mode is full hex or not.
+   * Returns true if full hex is active, otherwise returns false.
+   * @returns boolean
+   */
+  function isFullHex() {
+    return mode === full_hexadecimal;
   }
