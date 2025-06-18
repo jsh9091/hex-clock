@@ -91,3 +91,4 @@ lerna-debug.log
 Thumbs.db
 hex-clock/package-lock.json
 FB_Versa3_Sense/hex-clock/package-lock.json
+/FB_Versa4_Sense2/hex-clock
