@@ -113,10 +113,7 @@ function setColor() {
 function updateModeDisplay() {
   // resets
   hexLabel.style.textDecoration = "none";
-  digitalClockLabel.style.fontFamily = "FBNucleon-Bold";
   digitalClockLabel.style.fontSize = 90;
-  digitalClockLabel.x = 91;
-  digitalClockLabel.y = 188;
 
   switch (mode) {
     case hexadecimal:
@@ -124,6 +121,7 @@ function updateModeDisplay() {
       break;
     case standard_decimal:
       hexLabel.text = "Dec:"
+      digitalClockLabel.style.fontSize = 85;
       break;
     case full_hexadecimal:
       hexLabel.style.textDecoration = "underline";
