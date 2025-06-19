@@ -33,12 +33,12 @@
 }
 
 #amPmLabel {
-  font-size: 25;
+  font-size: 30;
   font-family: System-Bold;
   text-length: 80;
   text-anchor: start;
   x: 4%;
-  y: 38%;
+  y: 39%;
   fill: aqua
 }
 
@@ -64,7 +64,7 @@
 
 #stepsIcon {
   x: 46%;
-  y: 66%;
+  y: 65%;
   width: "35";
   height: "25";
   fill: black; 
@@ -72,48 +72,48 @@
 }
 
 #stepCountLabel {
-  font-size: 30;
+  font-size: 35;
   font-family: System-Bold;
   text-length: 80;
   text-anchor: start;
   x: 60%;
-  y: 73%;
+  y: 242;
   fill: black
 }
 
 #tempIcon {
   x: 49%;
-  y: 76%;
+  y: 75%;
   width: "16";
   height: "29";
   fill: black;
 }
 
 #tempLabel {
-  font-size: 28;
+  font-size: 35;
   font-family: System-Bold;
   text-length: 128;
   text-anchor: start;
   x: 60%;
-  y: 83%;
+  y: 278;
   fill: black;
 }
 
 #batteryIcon {
   x: 46%;
-  y: 88%;
+  y: 87%;
   width: "35";
-  height: "20";
+  height: "24";
   fill: black; 
   opacity: 1; 
 }
 
 #batteryLabel {
-  font-size: 30;
+  font-size: 35;
   font-family: System-Bold;
   text-length: 80;
   text-anchor: start;
   x: 60%;
-  y: 93%;
+  y: 315;
   fill: black
 }
