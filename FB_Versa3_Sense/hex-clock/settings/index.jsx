@@ -45,7 +45,13 @@ registerSettingsPage(({ settings }) => (
           { color: "gold" },
           { color: "orchid" },
           { color: "limegreen" },
-          { color: "darkgoldenrod" },
+          { color: "silver" },
+          { color: "dodgerblue" },
+          { color: "firebrick" },
+          { color: "fuchsia" },
+          { color: "orange" },
+          { color: "lightgray" },
+          { color: "skyblue" },
         ]}
       />
 
