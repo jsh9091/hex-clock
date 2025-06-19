@@ -47,10 +47,10 @@ registerSettingsPage(({ settings }) => (
           { color: "limegreen" },
           { color: "silver" },
           { color: "dodgerblue" },
-          { color: "firebrick" },
-          { color: "fuchsia" },
+          { color: "hotpink" },
+          { color: "bisque" },
           { color: "orange" },
-          { color: "lightgray" },
+          { color: "greenyellow" },
           { color: "skyblue" },
         ]}
       />
