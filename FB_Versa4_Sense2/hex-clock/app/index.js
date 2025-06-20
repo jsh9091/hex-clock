@@ -172,7 +172,7 @@ function updateTimeDisplay() {
     hours = rawHours;
   }
 
-  let mins = dateLastTick.getMinutes();;
+  let mins = dateLastTick.getMinutes();
   
   if (mode === standard_decimal) {
     // display decimal time on main digital clock
