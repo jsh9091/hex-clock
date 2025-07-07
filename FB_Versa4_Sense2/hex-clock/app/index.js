@@ -162,6 +162,7 @@ clock.ontick = (evt) => {
 function updateTimeDisplay() {
   
   let rawHours = dateLastTick.getHours();
+  let mins = dateLastTick.getMinutes();
 
   let hours;
   if (preferences.clockDisplay === "12h") {
@@ -171,8 +172,6 @@ function updateTimeDisplay() {
     // 24 hour format
     hours = rawHours;
   }
-
-  let mins = dateLastTick.getMinutes();
   
   if (mode === standard_decimal) {
     // display decimal time on main digital clock
