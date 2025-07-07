@@ -7,7 +7,7 @@ The watch-face features three main modes. The default main mode, "Hexadecimal" i
 
 Note: The watch-face should be selected and running on the phone while changing the Number Mode and color within the phone app. If the watch-face is not currently running on the Fitbit watch, then the setting changes might not take on the watch.
 
-NOTE: This watch-face is still in development and not yet submitted to app store. 
+NOTE: This watch-face pending approval to be published to the app store. 
 
 [Fitbit App Gallery listing](https://gallery.fitbit.com/details/2332fe64-124f-4c94-852f-7686552522af?key=4a38aea7-998b-4bd0-b2fa-9abdad2b91b4)
 
